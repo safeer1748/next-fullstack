@@ -42,7 +42,7 @@ export default function ContactForm() {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto dark">
       <CardHeader>
         <CardTitle className="text-2xl">Contact Us</CardTitle>
         <CardDescription>Fill out the form below and we&apos;ll get back to you as soon as possible.</CardDescription>

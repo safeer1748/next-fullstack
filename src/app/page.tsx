@@ -1,9 +1,9 @@
-import ContactForm from "@/components/contact-form"
+import HeroSection from "@/components/hero-section"
 
 export default function Page() {
   return (
-    <div className="container py-12">
-      <ContactForm />
+    <div className="container">
+      <HeroSection/>
     </div>
   )
 }
