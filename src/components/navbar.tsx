@@ -42,7 +42,15 @@ export default function Navbar() {
               </Link>
             </div>
             ):(
+              <div className="flex items-center space-x-3">
+              <Link href="/todos">
+              <Button variant="outline" className="text-gray-800 border border-gray-500 cursor-pointer">
+                Todos
+              </Button>
+              </Link>
               <UserButton/>
+            </div>
+              
             )
           }
           
@@ -57,7 +65,7 @@ export default function Navbar() {
       {/* Mobile Navigation */}
       {isMenuOpen && (
         <div className="md:hidden">
-          <div className="container px-4 py-4 flex flex-col space-y-4">
+          <div className="container px-4 py-4 bg-white flex flex-col space-y-4">
             <Link
               href="/"
               className="text-gray-800 hover:text-black transition-colors"
@@ -87,7 +95,15 @@ export default function Navbar() {
               </Link>
             </div>
             ):(
+              <div className="flex flex-col space-y-3 pt-2">
+              <Link href="/todos">
+              <Button variant="outline" className="text-gray-800 border border-gray-500 cursor-pointer">
+                Todos
+              </Button>
+              </Link>
               <UserButton/>
+            </div>
+              
             )
           }
           </div>
