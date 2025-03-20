@@ -7,7 +7,7 @@ export default function HeroSection() {
               Fullstack Next.js
             </h1>
             <p className="text-xl md:text-2xl text-gray-800 max-w-[800px] mx-auto">
-              Implemented authentication using Clerk Authentication and email sending using Resend
+              Implemented Clerk Authentication, Resend for sending email and drizzle with Neon Database
             </p>
           </div>
         </div>
