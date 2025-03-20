@@ -10,7 +10,7 @@ export default async function TodosPage() {
   const data = await getUser(user.id);
   return (
     <main className="container py-10">
-      <Todos data={data[0].todos || []} />
+      <Todos data={data?.[0]?.todos || []} />
     </main>
   );
 }
