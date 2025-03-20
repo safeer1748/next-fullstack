@@ -12,7 +12,7 @@ import { useAuth } from "@clerk/nextjs"
 export function Todos({ data }: { data: TodoItem[] }) {
   const [todos, setTodos] = useState<TodoItem[]>([])
   const [newTodoText, setNewTodoText] = useState("")
-  const userId:any = useAuth()
+  const { userId } = useAuth()
   useEffect(() => {
     setTodos(data)
   }, [data])
@@ -24,7 +24,7 @@ export function Todos({ data }: { data: TodoItem[] }) {
         text: newTodoText,
         done: false,
       }
-      await addTodo(newTodo.id, newTodo.text, userId!)
+      await addTodo(newTodo.id, newTodo.text, Number(userId))
       setNewTodoText("")
     }
   }
