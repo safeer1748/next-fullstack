@@ -8,27 +8,28 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Todo, type TodoItem } from "@/components/todos/todo"
 import { addTodo, deleteTodo, editTodo, toggleTodo } from "@/server-actions/todoActions"
+import { useAuth } from "@clerk/nextjs"
 export function Todos({ data }: { data: TodoItem[] }) {
   const [todos, setTodos] = useState<TodoItem[]>([])
   const [newTodoText, setNewTodoText] = useState("")
-  
+  const userId:any = useAuth()
   useEffect(() => {
     setTodos(data)
   }, [data])
 
-  const handleAddTodo = async() => {
+  const handleAddTodo = async () => {
     if (newTodoText.trim() !== "") {
       const newTodo: TodoItem = {
         id: Date.now().toString(),
         text: newTodoText,
         done: false,
       }
-      await addTodo(newTodo.id,newTodo.text)
+      await addTodo(newTodo.id, newTodo.text, userId!)
       setNewTodoText("")
     }
   }
 
-  const handleDeleteTodo = async(id: string) => {
+  const handleDeleteTodo = async (id: string) => {
     await deleteTodo(id)
   }
 
@@ -36,7 +37,7 @@ export function Todos({ data }: { data: TodoItem[] }) {
     await toggleTodo(id)
   }
 
-  const handleEditTodo = async(id: string, newText: string) => {
+  const handleEditTodo = async (id: string, newText: string) => {
     await editTodo(id, newText)
   }
 

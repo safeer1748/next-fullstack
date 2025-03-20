@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/navbar";
-import { ClerkProvider,ClerkLoaded,ClerkLoading } from '@clerk/nextjs'
+import { ClerkProvider, ClerkLoaded, ClerkLoading } from "@clerk/nextjs";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,14 +28,18 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          {/* Show loading screen while Clerk is initializing */}
           <ClerkLoading>
-            <h1 className="flex w-full h-screen text-2xl font-medium justify-center items-center">Loading...</h1>
+            <div className="flex w-full h-screen text-2xl font-medium justify-center items-center">
+              Loading...
+            </div>
           </ClerkLoading>
+
+          {/* Load the actual app after Clerk is ready */}
           <ClerkLoaded>
-          <Navbar />
-          {children}
+            <Navbar />
+            {children}
           </ClerkLoaded>
-          
         </body>
       </html>
     </ClerkProvider>
