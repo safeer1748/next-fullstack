@@ -6,24 +6,26 @@ import { useEffect, useState } from "react"
 import { PlusCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Todo, type TodoItem } from "@/components/todos/todo"
+import { Todo} from "@/components/todos/todo"
 import { addTodo, deleteTodo, editTodo, toggleTodo } from "@/server-actions/todoActions"
-export function Todos({ data }: { data: TodoItem[] }) {
-  const [todos, setTodos] = useState<TodoItem[]>([])
+import { useAuth } from "@clerk/nextjs"
+import { todoItemProps } from "@/types/todoType"
+export function Todos({ data }: { data: todoItemProps[] }) {
+  const [todos, setTodos] = useState<todoItemProps[]>([])
   const [newTodoText, setNewTodoText] = useState("")
-  
+  const {userId}=useAuth()
   useEffect(() => {
     setTodos(data)
   }, [data])
 
   const handleAddTodo = async() => {
     if (newTodoText.trim() !== "") {
-      const newTodo: TodoItem = {
+      const newTodo: todoItemProps = {
         id: Date.now().toString(),
         text: newTodoText,
         done: false,
       }
-      await addTodo(newTodo.id,newTodo.text)
+      await addTodo(newTodo.id,newTodo.text,Number(userId))
       setNewTodoText("")
     }
   }

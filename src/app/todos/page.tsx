@@ -7,7 +7,8 @@ export default async function TodosPage() {
   if (!userId) {
     redirect('/sign-in')
   }
-  const data = await getData();
+  const parsedUserId = Number(userId);
+  const data = await getData(parsedUserId);
   return (
     <main className="container py-10">
       <Todos data={data || []} />

@@ -5,15 +5,10 @@ import { Check, Pencil, Trash2, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-
-export interface TodoItem {
-  id: string
-  text: string
-  done: boolean
-}
+import { todoItemProps } from "@/types/todoType"
 
 interface TodoProps {
-  todo: TodoItem
+  todo: todoItemProps
   onDelete: (id: string) => void
   onToggleComplete: (id: string) => void
   onEdit: (id: string, newText: string) => void
