@@ -8,12 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Todo} from "@/components/todos/todo"
 import { addTodo, deleteTodo, editTodo, toggleTodo } from "@/server-actions/todoActions"
-import { useAuth } from "@clerk/nextjs"
 import { todoItemProps } from "@/types/todoType"
-export function Todos({ data }: { data: todoItemProps[] }) {
+export function Todos({ data,userId }: { data: todoItemProps[],userId: number}) {
   const [todos, setTodos] = useState<todoItemProps[]>([])
   const [newTodoText, setNewTodoText] = useState("")
-  const {userId}=useAuth()
   useEffect(() => {
     setTodos(data)
   }, [data])
@@ -25,7 +23,7 @@ export function Todos({ data }: { data: todoItemProps[] }) {
         text: newTodoText,
         done: false,
       }
-      await addTodo(newTodo.id,newTodo.text,Number(userId))
+      await addTodo(newTodo.id,newTodo.text,userId!)
       setNewTodoText("")
     }
   }

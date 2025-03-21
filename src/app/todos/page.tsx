@@ -1,5 +1,5 @@
 import { Todos } from "@/components/todos/todos";
-import { getData } from "@/server-actions/todoActions";
+import { getUser } from "@/server-actions/userActions";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 export default async function TodosPage() {
@@ -7,11 +7,10 @@ export default async function TodosPage() {
   if (!userId) {
     redirect('/sign-in')
   }
-  const parsedUserId = Number(userId);
-  const data = await getData(parsedUserId);
+  const data=await getUser(userId)
   return (
     <main className="container py-10">
-      <Todos data={data || []} />
+      <Todos data={data[0].todos || []} userId={data[0].id} />
     </main>
   );
 }
