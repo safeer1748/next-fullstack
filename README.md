@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NextStack
 
-## Getting Started
+This is a full-stack Next.js project utilizing modern technologies such as Clerk authentication, Drizzle ORM with Neon Serverless Postgres, and Shadcn UI components.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 14** with App Router
+- **Clerk Authentication** for secure user management
+- **Drizzle ORM** for database operations
+- **Neon Serverless Postgres** as the database
+- **Shadcn UI** for accessible UI components
+- **React Hook Form** for form validation
+- **Tailwind CSS** for styling
+- **Resend API** for email handling
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/safeer1748/next-fullstack.git
+   ```
+2. Navigate into the project directory:
+   ```sh
+   cd next-fullstack
+   ```
+3. Install dependencies:
+   ```sh
+   npm install
+   ```
+
+## Configuration
+
+- Create a `.env` file and add the required environment variables:
+  ```sh
+  RESEND_API_KEY=your_resend_api_key
+  RECEIVER_EMAIL=your_receiver_email
+  NEON_DATABASE_URL=your_neon_database_url
+  ```
+
+- Create a `.env.local` file and add the following environment variables:
+  ```sh
+  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+  CLERK_SECRET_KEY=your_clerk_secret_key
+  WEBHOOK_SECRET=your_webhook_secret
+  NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+  NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+  NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/
+  NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/
+  ```
+
+## Running the Project
+
+- Start the development server:
+  ```sh
+  npm run dev
+  ```
+- Build the project for production:
+  ```sh
+  npm run build
+  ```
+- Start the production server:
+  ```sh
+  npm start
+  ```
+
+## Folder Structure
+
+```
+next-fullstack/
+├── app/
+│   ├── layout.tsx  # Main layout
+│   ├── page.tsx    # Homepage
+│   ├── api/        # API routes
+├── drizzle/        # Database schema and migrations
+├── public/         # Static assets
+├── components/     # UI components
+├── styles/         # Styling files
+├── package.json    # Dependencies and scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
