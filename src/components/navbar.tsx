@@ -11,7 +11,7 @@ export default function Navbar() {
   const {userId}=useAuth()
   return (
     <nav className="w-full fixed z-50 py-4 ">
-      <div className="container px-4 md:px-6 flex items-center justify-between">
+      <div className="container px-4 md:px-6 mx-auto flex items-center justify-between max-w-[100rem]">
         {/* Logo/Brand */}
         <Link href="/" className="font-bold text-xl">
           NextStack
@@ -31,13 +31,8 @@ export default function Navbar() {
             !userId ? (
               <div className="flex items-center space-x-3">
               <Link href="/sign-in">
-              <Button variant="outline" className="text-gray-800 border border-gray-500 cursor-pointer">
-                Log In
-              </Button>
-              </Link>
-              <Link href="/sign-up">
               <Button  className="text-white cursor-pointer">
-                Sign Up
+                Sign In
               </Button>
               </Link>
             </div>
@@ -84,13 +79,8 @@ export default function Navbar() {
             !userId? (
               <div className="flex flex-col space-y-3 pt-2">
               <Link href="/sign-in">
-              <Button variant="outline" className="text-gray-800 border border-gray-500 cursor-pointer">
-                Log In
-              </Button>
-              </Link>
-              <Link href="/sign-up">
               <Button  className="text-white cursor-pointer">
-                Sign Up
+                Sign In
               </Button>
               </Link>
             </div>
