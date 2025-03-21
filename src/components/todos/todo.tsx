@@ -33,14 +33,14 @@ export function Todo({ todo, onDelete, onToggleComplete, onEdit }: TodoProps) {
   return (
     <div className="flex items-center justify-between p-4 border rounded-lg shadow-sm bg-card">
       <div className="flex items-center gap-3 flex-1">
-        <Checkbox checked={todo.done} onCheckedChange={() => onToggleComplete(todo.id)} id={`todo-${todo.id}`} />
+        <Checkbox  className="cursor-pointer" checked={todo.done} onCheckedChange={() => onToggleComplete(todo.id)} id={`todo-${todo.id}`} />
 
         {isEditing ? (
           <Input value={editText} onChange={(e) => setEditText(e.target.value)} className="flex-1" autoFocus />
         ) : (
           <label
             htmlFor={`todo-${todo.id}`}
-            className={`flex-1 cursor-pointer ${todo.done ? "line-through text-muted-foreground" : ""}`}
+            className={`flex-1 ${todo.done ? "line-through text-muted-foreground" : ""}`}
           >
             {todo.text}
           </label>
@@ -50,16 +50,16 @@ export function Todo({ todo, onDelete, onToggleComplete, onEdit }: TodoProps) {
       <div className="flex gap-2">
         {isEditing ? (
           <>
-            <Button size="icon" variant="ghost" onClick={handleEdit} aria-label="Save">
+            <Button className="cursor-pointer" size="icon" variant="ghost" onClick={handleEdit} aria-label="Save">
               <Check className="h-4 w-4" />
             </Button>
-            <Button size="icon" variant="ghost" onClick={cancelEdit} aria-label="Cancel">
+            <Button className="cursor-pointer" size="icon" variant="ghost" onClick={cancelEdit} aria-label="Cancel">
               <X className="h-4 w-4" />
             </Button>
           </>
         ) : (
           <>
-            <Button size="icon" variant="ghost" onClick={() => setIsEditing(true)} aria-label="Edit">
+            <Button className="cursor-pointer" size="icon" variant="ghost" onClick={() => setIsEditing(true)} aria-label="Edit">
               <Pencil className="h-4 w-4" />
             </Button>
             <Button
@@ -67,7 +67,7 @@ export function Todo({ todo, onDelete, onToggleComplete, onEdit }: TodoProps) {
               variant="ghost"
               onClick={() => onDelete(todo.id)}
               aria-label="Delete"
-              className="text-destructive hover:bg-destructive/10"
+              className="text-destructive hover:bg-destructive/10 cursor-pointer"
             >
               <Trash2 className="h-4 w-4" />
             </Button>
